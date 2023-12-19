@@ -60,8 +60,6 @@ def countAccept(part, workflows, id):
 
 def main():
   workflows = {}
-  parts = []
-  total = 4000^4
   with open("day19.txt") as f:
     for line in f:
       if len(line) > 5:
