@@ -89,20 +89,13 @@ class Conj(Module):
 
 def pushButton(modules):
   queue = []
-  counts = np.array([0, 0])
-  count = 0
   queue.append(['broadcaster', LOW, ''])
   while len(queue) > 0:
      id, pulse, prevId = queue.pop(0)
      # print(f'{prevId} -{pulse} -> {id}')
-     counts += pulse
      if id in modules:
       module = modules[id]
       module.handlePulse(pulse, queue, prevId)
-     if id == 'rx' and (pulse == LOW).all():
-      count+=1
-  # print(f'One cycle gives {counts} pulsese and {count}')
-  return count
    
 
 def run(filename):
@@ -123,13 +116,13 @@ def run(filename):
   for module in modules.values():
      module.initialize(modules)
      
-  # initialize data
+  # These are the four conjunctors that feed into the main output
   key = ['dj', 'nl', 'pb', 'rr']
   for id in key:
      modules[id].solve(LOW)
      
   for i in range(5000):
-    count = pushButton(modules)
+    pushButton(modules)
     for module in modules.values():
        module.handleEnd()
   
