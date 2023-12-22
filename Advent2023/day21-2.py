@@ -7,6 +7,8 @@ from enum import Enum
 import pprint
 
 ### THIS DOES NOT WORK!!!!!!!!!!!!!!!!!!!!!!!!!
+### The final iteration doesn't even work in the naive case, but I don't want to go back
+### and debug. I have things I think I could fix it, but I am tired.
 
 PPlates = {}
 
