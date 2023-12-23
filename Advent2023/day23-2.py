@@ -69,7 +69,6 @@ def walkPath(node, distance, visited):
   return m
 
 def makeGraph(map, start):
-  distance = 0
   queue = [start]
   intersections = {}
   nodes = {}
@@ -125,7 +124,7 @@ def run(filename):
   print(distance)
   
 def main():
-  run("day23.txt")
+  run("day23-e.txt")
 
 
 if __name__ == "__main__":
