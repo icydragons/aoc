@@ -5,7 +5,6 @@ import re
 def main():
   reg = re.compile('^(\d+)\\1$')
   reg2 = re.compile('^(\d+)\\1+$')
-  print(reg.findall('1111'))
   ranges = []
   with open("Advent2025/2.txt") as f:
     for line in f:
