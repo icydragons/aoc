@@ -17,10 +17,9 @@ def main():
   l2 = []
   with open("Advent2024/1.txt") as f:
     for line in f:
-      l = line.strip().split('   ')
-      print(l)
-      l1.append(int(l[0]))
-      l2.append(int(l[1]))
+      l, r = [int(x) for x in line.split()]
+      l1.append(l)
+      l2.append(r)
 
     l1.sort()
     l2.sort()
@@ -38,7 +37,6 @@ def main():
         index = l2.index(val)
         end = len(l2) - l2b.index(val)
         sum += val * (end - index)
-
       except:
         continue
 
