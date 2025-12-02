@@ -2,16 +2,6 @@ import math
 import re
 
 
-def howCanGo(time, distance):
-  for i in range(0,time):
-    far = i * (time - i)
-    if far > distance:
-      first = i
-      last = time - i
-      total = last - first + 1
-      return total
-
-
 def main():
   l = []
   with open("Advent2025/1.txt") as f:
@@ -45,6 +35,7 @@ def main():
       if dir == 'R':
         np = pos - val  
         if np < 1:
+          # was overcounting when it started on 0
           if pos > 0:
             count +=1
           pos = (100 + np) % 100
@@ -57,7 +48,6 @@ def main():
       
       print(pos, dir, oval, val, count)
 
-    # is high: 7283, is low 6613
     print(f'Part 2: {count}')
 
 
