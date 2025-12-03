@@ -2,15 +2,15 @@ import math
 import re
 
 def maxBank(bank, num):
-  curIndex = -1
+  curIndex = 0
   sum = 0
-  for i in range(num-1):
-    mv = max(bank[curIndex+1:-num+i+1])
-    curIndex = bank[curIndex+1:].index(mv) + curIndex + 1
-    sum += int(mv*10**(num-i-1))
+  for i in range(1, num):
+    mv = max(bank[curIndex:-num + i])
+    curIndex = bank[curIndex:].index(mv) + curIndex + 1
+    sum += int(mv*10**(num - i))
   # last one needs no end index...
-  mv = max(bank[curIndex+1:]) 
-  return sum+mv
+  mv = max(bank[curIndex:]) 
+  return sum + mv
 
 
 def main():
