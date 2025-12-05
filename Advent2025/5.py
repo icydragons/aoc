@@ -24,8 +24,7 @@ def main():
           cur = r1
        else:
           cur = range(min(r1.start, cur.start), max(r1.stop, cur.stop))
-    if cur:
-       newRanges.append(cur)
+    newRanges.append(cur)
 
     print(f'Part 2: {sum(len(r) for r in newRanges)}')
        
