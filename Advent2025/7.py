@@ -1,7 +1,7 @@
 import math
 import re
 
-def prop(s, sOld, val, i):
+def propegate(s, sOld, val, i):
    old = sOld[i]
    if val == '^' and old > 0:
       s[i-1], s[i], s[i+1] = old + s[i-1], 0, old + s[i+1]
@@ -21,7 +21,7 @@ def main():
     for row in grid[1:]:
        print(s)
        sOld = s
-       hits = list(map(lambda v,i: prop(s, sOld, v, i), row, range(len(row))))
+       hits = list(map(lambda v,i: propegate(s, sOld, v, i), row, range(len(row))))
        t += sum(hits)
 
     print(f'solution to 1: {t}')
@@ -31,7 +31,7 @@ def main():
     for row in grid[1:]:
        print(s)
        sOld = s.copy()
-       hits = list(map(lambda v,i: prop(s, sOld, v, i), row, range(len(row))))
+       hits = list(map(lambda v,i: propegate(s, sOld, v, i), row, range(len(row))))
 
     print(f'solution to 2: {sum(s)}')
 
