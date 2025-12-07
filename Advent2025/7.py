@@ -1,9 +1,9 @@
 import math
 import re
 
-def propegate(s, input, val, i):
+def propegate(o, input, val, i):
    if val == '^' and input > 0:
-      s[i-1], s[i], s[i+1] = input + s[i-1], 0, input + s[i+1]
+      o[i-1], o[i], o[i+1] = input + o[i-1], 0, input + o[i+1]
       return 1
    return 0
    
@@ -14,17 +14,17 @@ def main():
     for line in f:
        grid.append([x for x in line.strip()])
     
-    s = [0] * len(grid[0])
-    s[grid[0].index('S')] = 1
+    o = [0] * len(grid[0])
+    o[grid[0].index('S')] = 1
     splits = 0
     for row in grid[1:]:
-       print(s)
-       sOld = s
-       hits = list(map(lambda v,i: propegate(s, sOld[i], v, i), row, range(len(row))))
+       print(o)
+       oOld = o
+       hits = list(map(lambda v,i: propegate(o, oOld[i], v, i), row, range(len(row))))
        splits += sum(hits)
 
     print(f'solution to 1: {splits}')
-    print(f'solution to 2: {sum(s)}')
+    print(f'solution to 2: {sum(o)}')
 
     return 0
                 
