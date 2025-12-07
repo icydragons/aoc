@@ -25,16 +25,7 @@ def main():
        t += sum(hits)
 
     print(f'solution to 1: {t}')
-    
-    s = [0] * len(grid[0])
-    s[grid[0].index('S')] = 1
-    for row in grid[1:]:
-       print(s)
-       sOld = s.copy()
-       hits = list(map(lambda v,i: propegate(s, sOld, v, i), row, range(len(row))))
-
     print(f'solution to 2: {sum(s)}')
-
 
     return 0
                 
