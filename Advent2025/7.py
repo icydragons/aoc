@@ -1,10 +1,9 @@
 import math
 import re
 
-def propegate(s, sOld, val, i):
-   old = sOld[i]
-   if val == '^' and old > 0:
-      s[i-1], s[i], s[i+1] = old + s[i-1], 0, old + s[i+1]
+def propegate(s, input, val, i):
+   if val == '^' and input > 0:
+      s[i-1], s[i], s[i+1] = input + s[i-1], 0, input + s[i+1]
       return 1
    return 0
    
@@ -17,14 +16,14 @@ def main():
     
     s = [0] * len(grid[0])
     s[grid[0].index('S')] = 1
-    t = 0
+    splits = 0
     for row in grid[1:]:
        print(s)
        sOld = s
-       hits = list(map(lambda v,i: propegate(s, sOld, v, i), row, range(len(row))))
-       t += sum(hits)
+       hits = list(map(lambda v,i: propegate(s, sOld[i], v, i), row, range(len(row))))
+       splits += sum(hits)
 
-    print(f'solution to 1: {t}')
+    print(f'solution to 1: {splits}')
     print(f'solution to 2: {sum(s)}')
 
     return 0
