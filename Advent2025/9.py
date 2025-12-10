@@ -28,6 +28,10 @@ def area(a, b):
    return (abs(a[0]-b[0]) + 1) * (abs(a[1]-b[1]) + 1)
 
 def checkCrossings(cols, rows, a, b):
+   '''
+   Checks the boundary crossings. If all the four sides are colored then the
+   entire thing must be colored. If any side has uncolored then it fails.
+   '''
    # print(f'CHECKING from {a} to {b}')
    ax,bx = a[0],b[0]
    ay,by = a[1],b[1]
@@ -38,6 +42,10 @@ def checkCrossings(cols, rows, a, b):
 
 @lru_cache(maxsize=None)
 def computeRanges(lines, fixed):
+  ''' 
+  WLOG assume that the lines are all verticle and the fixed point is a row.
+  Look through the row create ranges where we would be inside (ie, G or R)
+  '''
   insideLoop = False
   dir = None
   insideRange = []
@@ -77,8 +85,11 @@ def computeRanges(lines, fixed):
    
       
 def checkCrossing(lines, target):
+      '''
+      If the target line is within a valid G/R range then the line is all inside
+      '''
       # print(f'Checking target {target}')
-      # ray trace at the line from the edge
+      # ray trace at the line from the edge to edge
       insideRange = computeRanges(lines, target.fixed)
 
       # print(f'ranges: {insideRange}')
@@ -135,7 +146,7 @@ def main():
         
     elapsed = time.perf_counter_ns() - before
     print(f'Solution to 1: {m} in ({elapsed//1_000_000} ms)')
-    # 4660195710 is too high, 1393287318 is too low
+    # 1393287318 is too low??
                 
     return 0
                 
