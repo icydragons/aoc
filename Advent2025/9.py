@@ -50,7 +50,7 @@ def computeRanges(lines, fixed):
   dir = None
   insideRange = []
   start = 0
-  #print(lines)
+  # print(lines)
   for line in lines:
       if (line.crossVal(fixed)):
         # print(f'crossing line {line} at {fixed}')
@@ -69,7 +69,6 @@ def computeRanges(lines, fixed):
             elif dir == newDir:
               dir = None
               if not insideLoop:
-                # print(f'not inside {dir}, {start}, {line.fixed}')
                 insideRange.append((start, line.fixed))
                 start = 0
         else:
@@ -94,8 +93,8 @@ def checkCrossing(lines, target):
 
       # print(f'ranges: {insideRange}')
       for range in insideRange:
-         if target.start >= range[0]:
-              return target.end <= range[1]
+         if target.start >= range[0] and target.end <= range[1]:
+            return True
 
       return False     
                
@@ -146,7 +145,6 @@ def main():
         
     elapsed = time.perf_counter_ns() - before
     print(f'Solution to 1: {m} in ({elapsed//1_000_000} ms)')
-    # 1393287318 is too low??
                 
     return 0
                 
